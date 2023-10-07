@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/bulletchat-common/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/bulletchat-controller/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/bulletchat-domain/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/bulletchat-model/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/bulletchat-repository/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/bulletchat-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/chatbullet-api/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/chatbullet-controller/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/chatbullet-model/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/chatbullet-repository/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/chatbullet-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/resources" charset="UTF-8" />
+  </component>
+</project>

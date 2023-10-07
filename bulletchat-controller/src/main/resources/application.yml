@@ -1,0 +1,51 @@
+spring:
+  profiles:
+    active: local
+
+  devtools:
+    restart:
+      enabled: true
+
+  datasource:
+    url: jdbc:mysql://${db.host}:${db.port}/bulletchat?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=America/Los_Angeles&allowPublicKeyRetrieval=True
+    username: ${db.username}
+    password: ${db.password}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+---
+spring:
+  config:
+    activate:
+      on-profile: local
+  devtools:
+    restart:
+      enabled: true
+
+db:
+  host: localhost
+  port: 3306
+  username: root
+  password: Celtics119.
+
+---
+spring:
+  config:
+    activate:
+      on-profile: dev
+  devtools:
+    restart:
+      enabled: false
+
+db:
+  host:
+  port:
+  username:
+  password:
