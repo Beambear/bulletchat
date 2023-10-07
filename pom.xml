@@ -9,11 +9,10 @@
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
     <modules>
-        <module>bulletchat-model</module>
-        <module>bulletchat-repository</module>
+        <module>bulletchat-common</module>
+        <module>bulletchat-domain</module>
         <module>bulletchat-service</module>
         <module>bulletchat-controller</module>
-        <module>bulletchat-common</module>
     </modules>
 
 

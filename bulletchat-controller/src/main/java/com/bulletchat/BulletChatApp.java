@@ -6,10 +6,9 @@ import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 @SpringBootApplication
-@EnableWebMvc
 public class BulletChatApp {
     public static void main (String[] args){
-        ConfigurableApplicationContext context = SpringApplication.run(BulletChatApp.class,args);
-
+//        ConfigurableApplicationContext context = SpringApplication.run(BulletChatApp.class,args);
+        SpringApplication.run(BulletChatApp.class , args);
     }
 }

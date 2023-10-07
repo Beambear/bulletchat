@@ -2,10 +2,6 @@ spring:
   profiles:
     active: local
 
-  devtools:
-    restart:
-      enabled: true
-
   datasource:
     url: jdbc:mysql://${db.host}:${db.port}/bulletchat?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=America/Los_Angeles&allowPublicKeyRetrieval=True
     username: ${db.username}
@@ -16,8 +12,6 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.MySQL8Dialect
-    hibernate:
-      ddl-auto: update
     show-sql: true
 
 ---
@@ -28,6 +22,10 @@ spring:
   devtools:
     restart:
       enabled: true
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
 
 db:
   host: localhost
@@ -42,7 +40,11 @@ spring:
       on-profile: dev
   devtools:
     restart:
-      enabled: false
+      enabled: true
+  jpa:
+    show-sql: false
+    hibernate:
+      ddl-auto: none
 
 db:
   host:
