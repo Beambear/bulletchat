@@ -16,7 +16,7 @@ public class UserServiceImpl implements IUserService {
     private IUserRepository userRepo;
     @Override
     public User addUser(User user) {
-        return userRepo.saveUser(user);
+        return userRepo.save(user);
     }
 
     @Override
@@ -24,7 +24,7 @@ public class UserServiceImpl implements IUserService {
         if(!uuid.equals(user.getUuid())) throw new ConditionException(StatusCode.EXCEPTION_TOKEN.getCode(),"Token与修改用户不匹配");
         User dbUser = userRepo.findUserByUuid(uuid);
         BeanPropertyUtil.copyProperties(user,dbUser);
-        return userRepo.saveUser(dbUser);
+        return userRepo.save(dbUser);
     }
 
     @Override

@@ -6,9 +6,9 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface IUserAccountRepository extends JpaRepository<UserAccount,Long> {
-    UserAccount saveUserAccount(UserAccount userAccount);
+    UserAccount save(UserAccount userAccount);
 
     String findUuidByAccount(String account);
 
-    UserAccount findUserAccountdByUuid(String uuid);
+    UserAccount findUserAccountByUuid(String uuid);
 }

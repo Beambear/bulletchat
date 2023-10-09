@@ -34,7 +34,7 @@ public class UserAccountServiceImpl implements IUserAccountService {
         if(userInfo.getPhone() != null) uuid = userRepo.findUuidByPhone(userInfo.getPhone());
         if(userInfo.getEmail() != null) uuid = userRepo.findUuidByEmail(userInfo.getEmail());
         if(uuid.equals("")) throw new ConditionException(StatusCode.NO_VALID_USER.getCode(),StatusCode.NO_VALID_USER.getInfo());
-        UserAccount dbAccount = userAccountRepo.findUserAccountdByUuid(uuid);
+        UserAccount dbAccount = userAccountRepo.findUserAccountByUuid(uuid);
         User dbUser = userRepo.findUserByUuid(uuid);
 
         //校对密码
@@ -48,7 +48,7 @@ public class UserAccountServiceImpl implements IUserAccountService {
         //更新登陆时间
         Date now = new Date();
         dbUser.setUpdateTime(now);
-        userRepo.saveUser(dbUser);
+        userRepo.save(dbUser);
         return token;
     }
     @Override
@@ -61,7 +61,7 @@ public class UserAccountServiceImpl implements IUserAccountService {
         account.setCreateTime(now);
         account.setUpdateTime(now);
         account.setUuid(UuidGeneratorUtil.generateUuid());
-        UserAccount dbAccount = userAccountRepo.saveUserAccount(account);
+        UserAccount dbAccount = userAccountRepo.save(account);
         return dbAccount;
     }
 
