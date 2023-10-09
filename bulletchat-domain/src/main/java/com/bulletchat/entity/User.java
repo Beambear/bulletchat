@@ -16,6 +16,10 @@ public class User {
     private Long id;
     @Column(unique = true, nullable = false)
     private String uuid;
+    @Column(unique = true)
+    private String openid;
+    private String email;
+    private String phone;
     private String nickname;
     private String avatarUuid;
     private String avatarUrl;

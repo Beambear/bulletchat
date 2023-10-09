@@ -19,10 +19,6 @@ public class UserAccount {
     private Long id;
     @Column(unique = true, nullable = false)
     private String uuid;
-    @Column(unique = true)
-    private String openid;
-    private String email;
-    private String phone;
     private String account;
     private String password;
     private String salt;
