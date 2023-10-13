@@ -14,6 +14,7 @@ import com.bulletchat.util.UserTokenUtil;
 import com.bulletchat.util.UuidGeneratorUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
 
@@ -51,6 +52,20 @@ public class UserAccountServiceImpl implements IUserAccountService {
         userRepo.save(dbUser);
         return token;
     }
+
+    /**
+     * Delete userAccount & User from db
+     * @param uuid
+     */
+    @Override
+    @Transactional
+    public void deleteAccount(String uuid) {
+        UserAccount dbAccount = userAccountRepo.findUserAccountByUuid(uuid);
+        userAccountRepo.delete(dbAccount);
+        User dbUser = userRepo.findUserByUuid(uuid);
+        userRepo.delete(dbUser);
+    }
+
     @Override
     public UserAccount addAccount(UserAccount account) {
         Date now = new Date();

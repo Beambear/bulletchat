@@ -7,4 +7,6 @@ import com.bulletchat.entity.UserAccount;
 public interface IUserAccountService {
     UserAccount addAccount(UserAccount account);
     String login(UserLoginRequest userInfo) throws Exception;
+
+    void deleteAccount(String uuid);
 }

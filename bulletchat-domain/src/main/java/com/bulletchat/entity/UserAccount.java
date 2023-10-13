@@ -25,5 +25,5 @@ public class UserAccount {
     @Temporal(TemporalType.TIMESTAMP)
     private Date createTime;
     @Temporal(TemporalType.TIMESTAMP)
-    private Date updateTime;
+    private Date updateTime;    //记录最后密码更改时间
 }

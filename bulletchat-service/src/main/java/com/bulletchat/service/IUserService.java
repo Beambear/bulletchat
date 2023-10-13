@@ -8,4 +8,5 @@ public interface IUserService {
     User updateUser(String uuid, User user);
 
     User getUser(String uuid);
+
 }

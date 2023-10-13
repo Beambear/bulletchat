@@ -29,5 +29,5 @@ public class User {
     @Temporal(TemporalType.TIMESTAMP)
     private Date createTime;
     @Temporal(TemporalType.TIMESTAMP)
-    private Date updateTime;
+    private Date updateTime;    //记录最后登录时间
 }

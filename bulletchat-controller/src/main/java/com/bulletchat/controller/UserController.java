@@ -59,4 +59,11 @@ public class UserController {
         String token = userAccountService.login(userInfo);
         return new JsonResponse<>(token);
     }
+
+    @DeleteMapping("users")
+    public JsonResponse<String> deleteAccount(){
+        String uuid = userSupport.getUuidByToken();
+        userAccountService.deleteAccount(uuid);
+        return JsonResponse.success();
+    }
 }

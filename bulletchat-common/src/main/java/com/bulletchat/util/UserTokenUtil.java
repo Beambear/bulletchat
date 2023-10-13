@@ -15,10 +15,13 @@ public class UserTokenUtil {
     private static final String ISSUER = "bulletchat";
 
     public static String generateToken(String uuid) throws Exception{
+        //使用256位RSA加密
         Algorithm algorithm = Algorithm.RSA256(RSAUtil.getPublicKey(),RSAUtil.getPrivateKey());
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(new Date());
+        //设置7天过期时间
         calendar.add(Calendar.DAY_OF_MONTH, 7);
+        //token里包含uuid，签发者，过期时间，加密算法
         return JWT.create().withKeyId(String.valueOf(uuid))
                 .withIssuer(ISSUER)
                 .withExpiresAt(calendar.getTime())
@@ -27,6 +30,7 @@ public class UserTokenUtil {
 
     public static String verifyToken(String token){
         try {
+            //使用256位RSA解密
             Algorithm algorithm = Algorithm.RSA256(RSAUtil.getPublicKey(),RSAUtil.getPrivateKey());
             JWTVerifier verifier = JWT.require(algorithm).build();
             DecodedJWT jwt = verifier.verify(token);
