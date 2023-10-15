@@ -36,7 +36,7 @@ public class UserAccountServiceImpl implements IUserAccountService {
         if(userInfo.getEmail() != null) uuid = userRepo.findUuidByEmail(userInfo.getEmail());
         if(uuid.equals("")) throw new ConditionException(StatusCode.NO_VALID_USER.getCode(),StatusCode.NO_VALID_USER.getInfo());
         UserAccount dbAccount = userAccountRepo.findByUuid(uuid);
-        User dbUser = userRepo.findUserByUuid(uuid);
+        User dbUser = userRepo.findByUuid(uuid);
 
         //校对密码
         String dbPassword = dbAccount.getPassword();
@@ -62,7 +62,7 @@ public class UserAccountServiceImpl implements IUserAccountService {
     public void deleteAccount(String uuid) {
         UserAccount dbAccount = userAccountRepo.findByUuid(uuid);
         userAccountRepo.delete(dbAccount);
-        User dbUser = userRepo.findUserByUuid(uuid);
+        User dbUser = userRepo.findByUuid(uuid);
         userRepo.delete(dbUser);
     }
 

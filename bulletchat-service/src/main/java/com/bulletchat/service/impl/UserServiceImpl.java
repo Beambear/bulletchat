@@ -22,14 +22,14 @@ public class UserServiceImpl implements IUserService {
     @Override
     public User updateUser(String uuid, User user) {
         if(!uuid.equals(user.getUuid())) throw new ConditionException(StatusCode.EXCEPTION_TOKEN.getCode(),"Token与修改用户不匹配");
-        User dbUser = userRepo.findUserByUuid(uuid);
+        User dbUser = userRepo.findByUuid(uuid);
         BeanPropertyUtil.copyProperties(user,dbUser);
         return userRepo.save(dbUser);
     }
 
     @Override
     public User getUser(String uuid) {
-        return userRepo.findUserByUuid(uuid);
+        return userRepo.findByUuid(uuid);
     }
 
 }
