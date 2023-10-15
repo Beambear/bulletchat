@@ -35,7 +35,7 @@ public class UserAccountServiceImpl implements IUserAccountService {
         if(userInfo.getPhone() != null) uuid = userRepo.findUuidByPhone(userInfo.getPhone());
         if(userInfo.getEmail() != null) uuid = userRepo.findUuidByEmail(userInfo.getEmail());
         if(uuid.equals("")) throw new ConditionException(StatusCode.NO_VALID_USER.getCode(),StatusCode.NO_VALID_USER.getInfo());
-        UserAccount dbAccount = userAccountRepo.findUserAccountByUuid(uuid);
+        UserAccount dbAccount = userAccountRepo.findByUuid(uuid);
         User dbUser = userRepo.findUserByUuid(uuid);
 
         //校对密码
@@ -60,7 +60,7 @@ public class UserAccountServiceImpl implements IUserAccountService {
     @Override
     @Transactional
     public void deleteAccount(String uuid) {
-        UserAccount dbAccount = userAccountRepo.findUserAccountByUuid(uuid);
+        UserAccount dbAccount = userAccountRepo.findByUuid(uuid);
         userAccountRepo.delete(dbAccount);
         User dbUser = userRepo.findUserByUuid(uuid);
         userRepo.delete(dbUser);

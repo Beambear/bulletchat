@@ -1,7 +1,9 @@
 package com.bulletchat.domain;
 
 import com.bulletchat.code.StatusCode;
+import lombok.Getter;
 
+@Getter
 public class JsonResponse<T> {
 
     private static final long serialVersionUID = 1L;
