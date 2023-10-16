@@ -5,6 +5,7 @@ public enum StatusCode {
     DECRYPT_FAILED("1","解密失败"),
     NO_VALID_USER("2","该用户不存在"),
     WRONG_PASSWORD("3","密码错误"),
+    INVALID_PASSWORD("31","非法密码"),
     EXPIRED_TOKEN("4","Token过期"),
     INVALID_TOKEN("5","非法Token"),
     EXCEPTION_TOKEN("6","Token异常"),

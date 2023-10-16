@@ -43,8 +43,8 @@ public class UserController {
     }
 
     @PostMapping("users")
-    public JsonResponse<String> addUserAccount(@RequestBody UserAccount userAccount) throws Exception {
-        UserAccount dbAccount = userAccountService.addAccount(userAccount);
+    public JsonResponse<String> addUserAccount(@RequestBody UserLoginRequest loginInfo) throws Exception {
+        UserAccount dbAccount = userAccountService.addAccount(loginInfo);
         User user = new User();
         user.setUuid(dbAccount.getUuid());
         user.setCreateTime(dbAccount.getCreateTime());
@@ -55,8 +55,8 @@ public class UserController {
     }
 
     @PostMapping("users-login")
-    public JsonResponse<String> loginUser(@RequestBody UserLoginRequest userInfo) throws Exception {
-        String token = userAccountService.login(userInfo);
+    public JsonResponse<String> loginUser(@RequestBody UserLoginRequest loginInfo) throws Exception {
+        String token = userAccountService.login(loginInfo);
         return new JsonResponse<>(token);
     }
 

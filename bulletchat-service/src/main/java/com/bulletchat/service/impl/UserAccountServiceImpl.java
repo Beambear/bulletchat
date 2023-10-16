@@ -66,12 +66,20 @@ public class UserAccountServiceImpl implements IUserAccountService {
         userRepo.delete(dbUser);
     }
 
+    /**
+     * Create new account based on loginInfo
+     * @param loginInfo
+     * @return
+     */
     @Override
-    public UserAccount addAccount(UserAccount account) {
+    public UserAccount addAccount(UserLoginRequest loginInfo) {
+        UserAccount account = new UserAccount();
         Date now = new Date();
         String salt = String.valueOf(now.getTime());
-        String rsaPassword = account.getPassword();
-        account.setPassword(passwordRsaToMd5(rsaPassword,salt));
+        if(loginInfo.getPassword() != null){    //如果密码不为空
+            String rsaPassword = loginInfo.getPassword();
+            account.setPassword(passwordRsaToMd5(rsaPassword,salt));
+        }
         account.setSalt(salt);
         account.setCreateTime(now);
         account.setUpdateTime(now);
@@ -88,9 +96,21 @@ public class UserAccountServiceImpl implements IUserAccountService {
             }catch (Exception e){
                 throw new ConditionException(StatusCode.DECRYPT_FAILED.getCode(),StatusCode.DECRYPT_FAILED.getInfo());
             }
+            //验证密码是否合规
+            isPasswordValid(rawPassword);
             return MD5Util.sign(rawPassword, salt, "UTF-8");
         }else{
             return null;
         }
+    }
+
+    private boolean isPasswordValid(String rawPassword){
+        String regex1 = "^[a-zA-Z0-9]+$";
+        String initial = Character.toString(rawPassword.charAt(0));
+        if(!initial.matches(regex1)) throw new ConditionException(StatusCode.INVALID_PASSWORD.getCode(),StatusCode.INVALID_PASSWORD.getInfo()+":密码开头只能为数字或者字母");    //开头只能为数字字母
+        String regex2 = "^[a-zA-Z0-9!\\\"#$%&'()*+,-./:;<=>?@[\\\\]^_`{|}~]+$";
+        if(!rawPassword.matches(regex2)) throw new ConditionException(StatusCode.INVALID_PASSWORD.getCode(),StatusCode.INVALID_PASSWORD.getInfo()+"密码包含非法符号");
+        if(rawPassword.length() <9) throw new ConditionException(StatusCode.INVALID_PASSWORD.getCode(),StatusCode.INVALID_PASSWORD.getInfo()+"密码长度不足");
+        return true;
     }
 }
