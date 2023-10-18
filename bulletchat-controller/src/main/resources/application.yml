@@ -14,6 +14,18 @@ spring:
         dialect: org.hibernate.dialect.MySQL8Dialect
     show-sql: true
 
+  redis:
+    data:
+      host: ${redis.host}
+      port: ${redis.port}
+      password: ${redis.password}
+
+  kafka:
+    bootstrap-servers: ${kafka.servers}
+    consumer:
+      group-id: ${kafka.group}
+      auto-offset-reset: ${kafka.auto-offset-reset}
+
 ---
 spring:
   config:
@@ -32,6 +44,16 @@ db:
   port: 3306
   username: root
   password: Celtics119.
+
+redis:
+  host: 127.0.0.1
+  port: 6379
+  password:
+
+kafka:
+  servers: localhost:9092
+  group: bullet-chat
+  auto-offset-rest: earliest
 
 ---
 spring:
